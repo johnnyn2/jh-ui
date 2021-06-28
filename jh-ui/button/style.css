@@ -1,0 +1,31 @@
+.jh-btn {
+    position: relative;
+    overflow: hidden;
+    transition: background 400ms;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    outline: 0;
+    border: 0;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+.jh-btn:hover {
+    opacity: 0.8;
+}
+  
+.jh-ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes ripple {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+}

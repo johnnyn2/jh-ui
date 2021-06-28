@@ -1,0 +1,19 @@
+.jh-default {
+    background-color: #e0e0e0;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.jh-primary {
+    background-color: #1976d2;
+    color: #fff;
+}
+
+.jh-danger {
+    background-color: rgb(220, 0, 78);
+    color: #fff;
+}
+
+.jh-disabled {
+    background-color: #e0e0e0;
+    color: rgba(0, 0, 0, 0.26);
+}
