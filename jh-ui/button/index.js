@@ -1,5 +1,8 @@
-class JHButton {
+import JHElement from '../core/jh-element.js';
+
+class JHButton extends JHElement {
     constructor(buttonEl) {
+        super(buttonEl);
         this.jhButton = buttonEl;
         buttonEl.addEventListener("click", this.createRipple);
     }
@@ -11,11 +14,6 @@ class JHButton {
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
     
-        console.log('clientX: ', event.clientX);
-        console.log('clientY: ', event.clientY);
-        console.log('offset left: ', button.offsetLeft);
-        console.log('offset top: ', button.offsetTop);
-        console.log('radius: ', radius);
         circle.style.width = circle.style.height = `${diameter}px`;
         circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
         circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
@@ -32,7 +30,20 @@ class JHButton {
 
     on(event, fn) {
         this.jhButton.removeEventListener(event, fn);
-        this.jhButton.addEventListener(event, fn)
+        this.jhButton.addEventListener(event, fn);
+        return this;
+    }
+
+    static html(label, theme) {
+        return `
+            <button class="jh-btn ${theme ? theme : "jh-default"}">${label}</button>
+        `;
+    }
+
+    static createElement(label, theme) {
+        const jhButtonHtml = this.html(label, theme);
+        const btnHtmlElement = super.createHTMLElement(jhButtonHtml);
+        return btnHtmlElement;
     }
 }
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./jh-ui/button/style.css">
     <link rel="stylesheet" href="/jh-ui/menu/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button/style.css">
+    <link rel="stylesheet" href="/jh-ui/icon-button-menu/style.css">
     <style>
         button {
             padding: 10px 20px;
@@ -15,17 +16,22 @@
     </style>
     <script type="module" src="/index.js"></script>
 </head>
-<body>
+<body style="padding: 20px;">
     
-    <div>
+    <div style="padding: 10px 0px;">
         <button class="jh-btn jh-primary">Find out more</button>
         <button>Find out less</button>
         <button class="jh-btn jh-default">Find out default</button>
         <button class="jh-btn jh-danger">Find out danger</button>
     </div>
     
-    <div>
-        <div class="jh-menu-wrapper">
+    <div style="display: flex; padding: 10px 0px;">
+        <div style="margin-right: 10px;">
+            <button class="jh-btn jh-icon-btn">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="jh-menu-wrapper jh-icon-btn-menu">
             <button class="jh-btn jh-icon-btn">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
             </button>
@@ -35,6 +41,7 @@
                 <button class="jh-menu-item">Menu Item 3</button>
             </div>
         </div>
+        <div id="generated-elements" style="margin-left: 10px; display: flex;"></div>
     </div>
 </body>
 </html>
