@@ -57,3 +57,9 @@ document.addEventListener("DOMContentLoaded", e => {
     generatedElements.appendChild(generatedBtnHtmlEl);
     generatedElements.appendChild(generatedIconBtnHtmlEl);
 })
+
+window.JHElement=JHElement;
+window.JHButton=JHButton;
+window.JHMenu=JHMenu;
+window.JHIconButton=JHIconButton;
+window.JHIconButtonMenu=JHIconButtonMenu;

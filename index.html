@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/jh-ui/menu/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button-menu/style.css">
+   
     <style>
         button {
             padding: 10px 20px;
@@ -17,12 +18,14 @@
     <script type="module" src="/index.js"></script>
 </head>
 <body style="padding: 20px;">
-    
-    <div style="padding: 10px 0px;">
-        <button class="jh-btn jh-primary">Find out more</button>
+
+    <div style="padding: 10px 0px; display: flex;">
+        <button id="testBtn" class="jh-btn jh-primary">Find out more</button>
         <button>Find out less</button>
         <button class="jh-btn jh-default">Find out default</button>
         <button class="jh-btn jh-danger">Find out danger</button>
+        <button class="jh-btn jh-disabled" disabled>Disabled</button>
+        <button class="jh-btn jh-primary jh-disabled loading" disabled>Fetching data</button>
     </div>
     
     <div style="display: flex; padding: 10px 0px;">

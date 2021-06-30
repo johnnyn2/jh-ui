@@ -4,6 +4,8 @@ class JHButton extends JHElement {
     constructor(buttonEl) {
         super(buttonEl);
         this.jhButton = buttonEl;
+        this.isLoading = false;
+        this.isDisabled = false;
         buttonEl.addEventListener("click", this.createRipple);
     }
 
@@ -32,6 +34,27 @@ class JHButton extends JHElement {
         this.jhButton.removeEventListener(event, fn);
         this.jhButton.addEventListener(event, fn);
         return this;
+    }
+
+    setIsLoading(isLoading) {
+        this.isLoading = isLoading;
+        if (isLoading) {
+            this.jhButton.classList.add("loading");
+            this.setIsDisabled(true);
+        } else {
+            this.jhButton.classList.remove("loading");
+            this.setIsDisabled(false);
+        }
+    }
+
+    setIsDisabled(isDisabled) {
+        this.isDisabled = isDisabled;
+        this.jhButton.disabled = isDisabled;
+        if (isDisabled) {
+            this.jhButton.classList.add("jh-disabled");
+        } else {
+            this.jhButton.classList.remove("jh-disabled");
+        }
     }
 
     static html(label, theme) {
