@@ -57,14 +57,14 @@ class JHButton extends JHElement {
         }
     }
 
-    static html(label, theme) {
+    static html({id, label, theme}) {
         return `
-            <button class="jh-btn ${theme ? theme : "jh-default"}">${label}</button>
+            <button ${id && id !== '' ? `id="${id}"` : ''} class="jh-btn ${theme ? theme : "jh-default"}">${label}</button>
         `;
     }
 
-    static createElement(label, theme) {
-        const jhButtonHtml = this.html(label, theme);
+    static createElement(props) {
+        const jhButtonHtml = this.html(props);
         const btnHtmlElement = super.createHTMLElement(jhButtonHtml);
         return btnHtmlElement;
     }

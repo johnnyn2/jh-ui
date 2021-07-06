@@ -54,12 +54,22 @@ class JHCheckbox extends JHElement {
         return this;
     }
 
-    static html() {
-        
+    static html({id, checked, name, value, label}) {
+        return `
+            <label ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-checkbox">
+                <input type="checkbox" checked="${checked}" name="${name}" value="${value}">
+                <span class="checkmark">
+                    <span class="check"></span>
+                </span>
+                ${label}
+            </label>
+        `;
     }
 
-    static createElement() {
-
+    static createElement(props) {
+        const jhCheckboxHtml = this.html(props);
+        const checkboxHtmlElement = super.createHTMLElement(jhCheckboxHtml);
+        return checkboxHtmlElement;
     }
 }
 

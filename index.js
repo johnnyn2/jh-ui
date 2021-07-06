@@ -45,12 +45,15 @@ document.addEventListener("DOMContentLoaded", e => {
             clickHandler: e => console.log('Close')
         }
     ]; // some data fetched from api
-    const generatedIconBtnMenuHtmlEl = JHIconButtonMenu.createElement("fa fa-ellipsis-v", mockMenuOptions);
+    const generatedIconBtnMenuHtmlEl = JHIconButtonMenu.createElement({
+        iconFont: "fa fa-ellipsis-v",
+        menuItems: mockMenuOptions
+    });
     const generatedJHIconBtnMenu = new JHIconButtonMenu(generatedIconBtnMenuHtmlEl, mockMenuOptions.map(opt => opt.clickHandler));
-    const generatedBtnHtmlEl = JHButton.createElement("1234567");
+    const generatedBtnHtmlEl = JHButton.createElement({ label: "1234567"});
     const generatedJHButton = new JHButton(generatedBtnHtmlEl);
     generatedJHButton.on('click', e => console.log('I am generated JHButton'));
-    const generatedIconBtnHtmlEl = JHIconButton.createElement("fa fa-ellipsis-v");
+    const generatedIconBtnHtmlEl = JHIconButton.createElement({ iconFont: "fa fa-ellipsis-v"});
     const generatedJHIconBtn = new JHIconButton(generatedIconBtnHtmlEl);
     generatedJHIconBtn.on('click', e => console.log('I am generated JHIconButton'))
     const generatedElements = document.getElementById('generated-elements');

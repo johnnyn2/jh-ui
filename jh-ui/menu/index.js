@@ -23,16 +23,16 @@ class JHMenu extends JHElement {
         this.jhMenu.classList.add('hide');
     }
 
-    static html(menuItems) {
+    static html({id, menuItems}) {
         return `
-            <div class="jh-menu hide">
+            <div ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-menu hide">
                 ${menuItems.map(item => `<button class="jh-menu-item">${item.label}</button>`).join('')}
             </div>
         `
     }
 
-    static createElement(menuItems) {
-        const jhMenuHTML = this.html(menuItems);
+    static createElement(props) {
+        const jhMenuHTML = this.html(props);
         const menuHtmlElement = super.createHTMLElement(jhMenuHTML);
         return menuHtmlElement;
     }

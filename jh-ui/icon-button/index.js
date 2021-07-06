@@ -6,16 +6,16 @@ class JHIconButton extends JHButton {
         super(iconBtnEl);
     }
 
-    static html(iconFont) {
+    static html({id, iconFont}) {
         return `
-            <button class="jh-btn jh-icon-btn">
+            <button ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-btn jh-icon-btn">
                 <i class="${iconFont}" aria-hidden="true"></i>
             </button>
         `
     }
 
-    static createElement(iconFont) {
-        const jhButtonHtml = this.html(iconFont);
+    static createElement(props) {
+        const jhButtonHtml = this.html(props);
         const buttonElement = super.createHTMLElement(jhButtonHtml);
         return buttonElement;
     }

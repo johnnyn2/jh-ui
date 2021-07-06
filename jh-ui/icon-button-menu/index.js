@@ -15,17 +15,17 @@ class JHIconButtonMenu extends JHElement{
         this.jhMenu = new JHMenu(iconBtnMenu.querySelector('.jh-menu'), menuItemHandlers);
     }
 
-    static html(iconFont, menuItems) {
+    static html({id, iconFont, menuItems}) {
         return `
-            <div class="jh-menu-wrapper jh-icon-btn-menu">
-                ${JHIconButton.html(iconFont)}
-                ${JHMenu.html(menuItems)}
+            <div ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-menu-wrapper jh-icon-btn-menu">
+                ${JHIconButton.html({iconFont})}
+                ${JHMenu.html({menuItems})}
             </div>
         `
     }
 
-    static createElement(iconFont, menuItems) {
-        const jhIconBtnMenuHTML = this.html(iconFont, menuItems);
+    static createElement(props) {
+        const jhIconBtnMenuHTML = this.html(props);
         const iconBtnMenuHtmlElement = super.createHTMLElement(jhIconBtnMenuHTML);
         return iconBtnMenuHtmlElement;
     }
