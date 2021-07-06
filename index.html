@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/jh-ui/menu/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button-menu/style.css">
+    <link rel="stylesheet" href="/jh-ui/checkbox/style.css">
    
     <style>
         button {
@@ -18,13 +19,12 @@
     <script type="module" src="/index.js"></script>
 </head>
 <body style="padding: 20px;">
-
     <div style="padding: 10px 0px; display: flex;">
         <button id="testBtn" class="jh-btn jh-primary">Find out more</button>
         <button>Find out less</button>
         <button class="jh-btn jh-default">Find out default</button>
         <button class="jh-btn jh-danger">Find out danger</button>
-        <button class="jh-btn jh-disabled" disabled>Disabled</button>
+        <button class="jh-btn jh-default jh-disabled" disabled>Disabled</button>
         <button class="jh-btn jh-primary jh-disabled loading" disabled>Fetching data</button>
     </div>
     
@@ -45,6 +45,30 @@
             </div>
         </div>
         <div id="generated-elements" style="margin-left: 10px; display: flex;"></div>
+    </div>
+
+    <div style="display: flex;">
+        <label id="themedCheckbox" class="jh-checkbox">
+            <input type="checkbox" checked="checked" name="checkbox" value="themed">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Themed checkbox
+        </label>
+        <label id="defaultCheckbox" class="jh-checkbox" style="margin-left: 10px;">
+            <input type="checkbox" checked="checked" name="checkbox" value="default">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Default checkbox
+        </label>
+        <label id="errorCheckbox" class="jh-checkbox" style="margin-left: 10px;">
+            <input type="checkbox" checked="checked" name="checkbox" value="error">
+            <span class="checkmark jh-error">
+                <span class="check"></span>
+            </span>
+            Error checkbox
+        </label>
     </div>
 </body>
 </html>

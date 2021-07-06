@@ -3,6 +3,7 @@ import JHButton from './jh-ui/button/index.js';
 import JHMenu from './jh-ui/menu/index.js';
 import JHIconButton from './jh-ui/icon-button/index.js';
 import JHIconButtonMenu from './jh-ui/icon-button-menu/index.js';
+import JHCheckbox from './jh-ui/checkbox/index.js';
 
 document.addEventListener("DOMContentLoaded", e => {
     const buttons = document.getElementsByClassName("jh-btn");
@@ -56,6 +57,13 @@ document.addEventListener("DOMContentLoaded", e => {
     generatedElements.appendChild(generatedIconBtnMenuHtmlEl);
     generatedElements.appendChild(generatedBtnHtmlEl);
     generatedElements.appendChild(generatedIconBtnHtmlEl);
+
+    const themedCheckbox = document.getElementById('themedCheckbox');
+    const jhThemedCheckbox = new JHCheckbox(themedCheckbox, '#1976d2');
+    const defaultCheckbox = document.getElementById('defaultCheckbox');
+    const jhDefaultCheckbox = new JHCheckbox(defaultCheckbox);
+    const errorCheckbox = document.getElementById('errorCheckbox');
+    const jhErrorCheckbox = new JHCheckbox(errorCheckbox, '#FF6530');
 })
 
 window.JHElement=JHElement;
@@ -63,3 +71,4 @@ window.JHButton=JHButton;
 window.JHMenu=JHMenu;
 window.JHIconButton=JHIconButton;
 window.JHIconButtonMenu=JHIconButtonMenu;
+window.JHCheckbox=JHCheckbox;

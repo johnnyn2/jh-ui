@@ -17,3 +17,7 @@
     opacity: 0.4 !important;
     cursor: default !important;
 }
+
+.jh-error {
+    border-color: #FF6530;
+}
