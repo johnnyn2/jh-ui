@@ -4,6 +4,8 @@ import JHMenu from './jh-ui/menu/index.js';
 import JHIconButton from './jh-ui/icon-button/index.js';
 import JHIconButtonMenu from './jh-ui/icon-button-menu/index.js';
 import JHCheckbox from './jh-ui/checkbox/index.js';
+import JHTextField from './jh-ui/textfield/index.js';
+import JHTextFieldGroup from './jh-ui/textfield-group/index.js';
 
 document.addEventListener("DOMContentLoaded", e => {
     const buttons = document.getElementsByClassName("jh-btn");
@@ -67,6 +69,32 @@ document.addEventListener("DOMContentLoaded", e => {
     const jhDefaultCheckbox = new JHCheckbox(defaultCheckbox);
     const errorCheckbox = document.getElementById('errorCheckbox');
     const jhErrorCheckbox = new JHCheckbox(errorCheckbox, '#FF6530');
+    jhErrorCheckbox.on('click', () => console.log('error check is clicked'))
+
+    const emailTextfield = document.getElementById('emailTextfield');
+    const jhEmailTextfield = new JHTextField(emailTextfield);
+    const validateEmailBtn = document.getElementById('validateEmailBtn');
+    const jhValidateEmailBtn = new JHButton(validateEmailBtn);
+    jhValidateEmailBtn.on('click', e => {
+        const isValid = jhEmailTextfield.validate(
+            jhEmailTextfield.isEmail(),
+            !jhEmailTextfield.isNumber()
+        );
+        console.log(isValid);
+    })
+    // const rangeInputField = document.getElementById('rangeTextfield');
+    // const jhRangeInputField = new JHTextField(rangeInputField);
+    const rangeInputGroup = document.getElementById('rangeInputGroup');
+    const jhRangeInputGroup = new JHTextFieldGroup(rangeInputGroup);
+    const validateRangeBtn = document.getElementById('validateRangeBtn');
+    const jhValidateRangeBtn = new JHButton(validateRangeBtn);
+    jhValidateRangeBtn.on('click', e => {
+        const textfield = jhRangeInputGroup.jhTextField;
+        const isValid = textfield.validate(
+            textfield.withinRange(1, 2)
+        );
+        console.log(isValid);
+    });
 })
 
 window.JHElement=JHElement;
@@ -75,3 +103,5 @@ window.JHMenu=JHMenu;
 window.JHIconButton=JHIconButton;
 window.JHIconButtonMenu=JHIconButtonMenu;
 window.JHCheckbox=JHCheckbox;
+window.JHTextField=JHTextField;
+window.JHTextFieldGroup=JHTextFieldGroup;

@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="/jh-ui/icon-button/style.css">
     <link rel="stylesheet" href="/jh-ui/icon-button-menu/style.css">
     <link rel="stylesheet" href="/jh-ui/checkbox/style.css">
-   
+    <link rel="stylesheet" href="/jh-ui/textfield/style.css">
+    <link rel="stylesheet" href="/jh-ui/textfield-group/style.css">
     <style>
         button {
             padding: 10px 20px;
@@ -47,7 +48,7 @@
         <div id="generated-elements" style="margin-left: 10px; display: flex;"></div>
     </div>
 
-    <div style="display: flex;">
+    <div style="display: flex; padding: 10px 0px;">
         <label id="themedCheckbox" class="jh-checkbox">
             <input type="checkbox" checked="checked" name="checkbox" value="themed">
             <span class="checkmark">
@@ -69,6 +70,25 @@
             </span>
             Error checkbox
         </label>
+    </div>
+
+    <div style="display: flex;">
+        <div class="jh-textfield-group">
+            <label for="emailTextfield">Email</label>
+            <div class="jh-textfield-row">
+                <input id="emailTextfield" class="jh-textfield" type="text">
+                <button id="validateEmailBtn" class="jh-btn jh-primary">Validate email</button>
+            </div>
+            <div class="jh-errtxt"></div>
+        </div>
+        <div id="rangeInputGroup" class="jh-textfield-group">
+            <label for="rangeTextfield">Number</label>
+            <div class="jh-textfield-row">
+                <input id="rangeTextfield" class="jh-textfield" type="text" placeholder="between 1 and 2">
+                <button id="validateRangeBtn" class="jh-btn jh-primary">Validate range</button>
+            </div>
+            <div class="jh-errtxt"></div>
+        </div>
     </div>
 </body>
 </html>

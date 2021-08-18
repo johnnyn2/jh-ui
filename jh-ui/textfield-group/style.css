@@ -1,0 +1,13 @@
+.jh-textfield-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.jh-textfield-row {
+    display: flex;
+}
+
+.jh-errtxt {
+    color: #FF6530;
+    visibility: hidden;
+}

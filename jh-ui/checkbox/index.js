@@ -14,6 +14,7 @@ class JHCheckbox extends JHElement {
         checkmark.style.backgroundColor = this.isChecked ? themeColor : '';
         const ref = this;
         checkboxInput.addEventListener('click', function(e) {
+            e.stopPropagation();
             if (ref.isDisabled) {
                 e.preventDefault();
                 return;
@@ -21,6 +22,12 @@ class JHCheckbox extends JHElement {
             ref.setIsChecked(!ref.isChecked);
             ref.setIsError(false);
         })
+    }
+
+    on(event, fn) {
+        this.jhCheckbox.querySelector('input[type="checkbox"]').removeEventListener(event, fn);
+        this.jhCheckbox.querySelector('input[type="checkbox"]').addEventListener(event, fn);
+        return this;
     }
 
     setIsChecked(isChecked) {
