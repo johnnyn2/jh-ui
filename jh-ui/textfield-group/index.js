@@ -34,7 +34,7 @@ class JHTextFieldGroup extends JHElement {
 
     static html({textfieldGroupId, label, textfieldId, placeholder, name}) {
         return `
-            <div id="${textfieldGroupId}" class="jh-textfield-group">
+            <div ${typeof textfieldGroupId !== 'undefined' && textfieldGroupId !== '' ? `id="${textfieldGroupId}"` : ''} class="jh-textfield-group">
                 <label for="${textfieldId}">${label}</label>
                 <div class="jh-textfield-row">
                     <input id="${textfieldId}" class="jh-textfield" type="text" placeholder="${placeholder}" name="${name}">

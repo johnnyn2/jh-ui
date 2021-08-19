@@ -41,7 +41,7 @@ class JHTextField extends JHElement {
     }
 
     static html({id, name}) {
-        return `<input id="${id}" class="jh-textfield" type="text" name="${name}">`;
+        return `<input ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-textfield" type="text" name="${name}">`;
     }
 
     static createElement({id, name}) {

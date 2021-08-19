@@ -62,7 +62,7 @@ class JHRadio extends JHElement {
 
     static html({id, checked, name, value, label}) {
         return `
-            <label id="${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''}" class="jh-radio">
+            <label ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-radio">
                 <input type="radio" checked="${checked}" name="${name}" value="${value}">
                 <span class="checkmark">
                     <span class="check"></span>
