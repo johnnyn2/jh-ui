@@ -114,3 +114,4 @@ window.JHIconButtonMenu=JHIconButtonMenu;
 window.JHCheckbox=JHCheckbox;
 window.JHTextField=JHTextField;
 window.JHTextFieldGroup=JHTextFieldGroup;
+window.JHValidation=JHValidation;
