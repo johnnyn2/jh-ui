@@ -1,18 +1,38 @@
+/**
+ * @author Johnny Ho
+ */
 class JHElement {
+    /**
+     * @param {HTMLElement} el HTML element
+     */
     constructor(el) {
         this.elm = el;
     }
 
+    /**
+     * 
+     * @returns {HTMLElement} Target HTMLElement
+     */
     el() {
         return this.elm;
     }
 
+    /**
+     * 
+     * @param {String} htmlString HTML element string template 
+     * @returns {HTMLElement} A HTML element created from the string template
+     */
     static createHTMLElement(htmlString) {
         const div = document.createElement('div');
         div.innerHTML = htmlString.trim();
         return div.firstChild;
     }
 
+
+    /**
+     * 
+     * @returns {JSON} Create JSON object from JH-UI input elements for API request
+     */
     static json() {
         const data = {};
         const queryData = this.queryForm();
@@ -32,6 +52,10 @@ class JHElement {
         return data;
     }
 
+    /**
+     * 
+     * @returns {String} Create query string from JH-UI input elements for API request
+     */
     static queryForm() {
         const inputs = document.querySelectorAll('input');
         const form = document.createElement('form');

@@ -1,6 +1,12 @@
 import JHElement from '../core/jh-element.js';
 
+/**
+ * @author Johnny Ho
+ */
 class JHButton extends JHElement {
+    /**
+     * @param {HTMLButtonElement} buttonEl HTML button element
+     */
     constructor(buttonEl) {
         super(buttonEl);
         this.jhButton = buttonEl;
@@ -9,6 +15,9 @@ class JHButton extends JHElement {
         buttonEl.addEventListener("click", this.createRipple);
     }
 
+    /**
+     * @param {Event} event Click event
+     */
     createRipple(event) {
         const button = event.currentTarget;
     
@@ -30,12 +39,21 @@ class JHButton extends JHElement {
         button.appendChild(circle);
     }
 
+    /**
+     * @param {String} event Event string of HTML button
+     * @param {Function} fn Handler function for the event
+     * @returns {JHButton} JHButton reference
+     */
     on(event, fn) {
         this.jhButton.removeEventListener(event, fn);
         this.jhButton.addEventListener(event, fn);
         return this;
     }
 
+
+    /**
+     * @param {Boolean} isLoading Loading or idle flag
+     */
     setIsLoading(isLoading) {
         this.isLoading = isLoading;
         if (isLoading) {
@@ -47,6 +65,9 @@ class JHButton extends JHElement {
         }
     }
 
+    /**
+     * @param {Boolean} isDisabled Enabled or disabled flag
+     */
     setIsDisabled(isDisabled) {
         this.isDisabled = isDisabled;
         this.jhButton.disabled = isDisabled;
@@ -57,14 +78,29 @@ class JHButton extends JHElement {
         }
     }
 
-    static html({id, label, theme}) {
+    /**
+     * @param {Object} props Props of html JHButton
+     * @param {String} [props.id] Id of the button
+     * @param {String} props.label Label of the button
+     * @param {String} [props.theme] Theme of the button 
+     * @returns {String} HTML string of JHButton
+     */
+    static html(props) {
+        const {id, label, theme} = props;
         return `
             <button ${id && id !== '' ? `id="${id}"` : ''} class="jh-btn ${theme ? theme : "jh-default"}">${label}</button>
         `;
     }
 
-    static createElement({id, label, theme}) {
-        const jhButtonHtml = this.html({id, label, theme});
+    /**
+     * @param {Object} props Props of html JHButton
+     * @param {String} [props.id] Id of the button
+     * @param {String} props.label Label of the button
+     * @param {String} props.theme Theme of the button 
+     * @returns {HTMLElement} HTML element of JHButton
+     */
+    static createElement(props) {
+        const jhButtonHtml = this.html(props);
         const btnHtmlElement = super.createHTMLElement(jhButtonHtml);
         return btnHtmlElement;
     }

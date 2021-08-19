@@ -2,7 +2,14 @@ import JHElement from "../core/jh-element.js";
 import JHIconButton from "../icon-button/index.js";
 import JHMenu from "../menu/index.js";
 
+/**
+ * @author Johnny Ho
+ */
 class JHIconButtonMenu extends JHElement{
+    /**
+     * @param {HTMLElement} iconBtnMenu HTML icon button menu element
+     * @param {Array.<Function>} menuItemHandlers Array of click handler for each menu item
+     */
     constructor(iconBtnMenu, menuItemHandlers) {
         super(iconBtnMenu);
         this.iconBtnMenu = iconBtnMenu;
@@ -15,7 +22,16 @@ class JHIconButtonMenu extends JHElement{
         this.jhMenu = new JHMenu(iconBtnMenu.querySelector('.jh-menu'), menuItemHandlers);
     }
 
-    static html({id, iconFont, menuItems}) {
+    /**
+     * 
+     * @param {Object} props Props of the html JHIconButtonMenu
+     * @param {String} [props.id] Id of the icon button menu
+     * @param {String} props.iconFont Icon font string from Font-Awesome-4.7.0
+     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @returns {String} HTML string of icon button menu
+     */
+    static html(props) {
+        const {id, iconFont, menuItems} = props;
         return `
             <div ${typeof id !== 'undefined' && id !== '' ? `id="${id}"` : ''} class="jh-menu-wrapper jh-icon-btn-menu">
                 ${JHIconButton.html({iconFont})}
@@ -24,6 +40,14 @@ class JHIconButtonMenu extends JHElement{
         `
     }
 
+    /**
+     * 
+     * @param {Object} props Props of the html JHIconButtonMenu
+     * @param {String} [props.id] Id of the icon button menu
+     * @param {String} props.iconFont Icon font string from Font-Awesome-4.7.0
+     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @returns {HTMLElement} HTML element of icon button menu
+     */
     static createElement({id, iconFont, menuItems}) {
         const jhIconBtnMenuHTML = this.html({id, iconFont, menuItems});
         const iconBtnMenuHtmlElement = super.createHTMLElement(jhIconBtnMenuHTML);
