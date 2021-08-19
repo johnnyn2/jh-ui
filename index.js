@@ -7,6 +7,7 @@ import JHCheckbox from './jh-ui/checkbox/index.js';
 import JHTextField from './jh-ui/textfield/index.js';
 import JHTextFieldGroup from './jh-ui/textfield-group/index.js';
 import JHValidation from './jh-ui/util/validation.js';
+import JHRadio from './jh-ui/radio/index.js';
 
 const {
     isEmail,
@@ -114,6 +115,32 @@ document.addEventListener("DOMContentLoaded", e => {
     });
     const genTextfieldGrp = new JHTextFieldGroup(genTextfieldGrpHtml);
     document.getElementById('textinput-container').appendChild(genTextfieldGrpHtml);
+
+    const defaultRadioEl = document.getElementById('defaultRadio');
+    const jhDefaultRadio = new JHRadio(defaultRadioEl, 'rgba(0, 0, 0, 0.54)');
+    const themedRadioEl = document.getElementById('themedRadio');
+    const jhThemedRadio = new JHRadio(themedRadioEl, 'rgb(25, 118, 210)');
+    const errorRadioEl = document.getElementById('errorRadio');
+    const jhErrorRadio = new JHRadio(errorRadioEl, '#FF6530');
+
+    const genRadioElHtml1 = JHRadio.createElement({
+        id: 'test-rad1',
+        checked: true,
+        name: '123 rad',
+        value: '123 rad1',
+        label: 'Generated radio1'
+    });
+    const jhGenRadioEl1 = new JHRadio(genRadioElHtml1, 'green');
+    const genRadioElHtml2 = JHRadio.createElement({
+        id: 'test-rad2',
+        checked: false,
+        name: '123 rad',
+        value: '123 rad2',
+        label: 'Generated radio2'
+    });
+    const jhGenRadioEl2 = new JHRadio(genRadioElHtml2, 'red');
+    document.getElementById('radio-container').appendChild(genRadioElHtml1);
+    document.getElementById('radio-container').appendChild(genRadioElHtml2);
 })
 
 window.JHElement=JHElement;
@@ -124,4 +151,5 @@ window.JHIconButtonMenu=JHIconButtonMenu;
 window.JHCheckbox=JHCheckbox;
 window.JHTextField=JHTextField;
 window.JHTextFieldGroup=JHTextFieldGroup;
+window.JHRadio=JHRadio;
 window.JHValidation=JHValidation;

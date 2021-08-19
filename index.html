@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/jh-ui/checkbox/style.css">
     <link rel="stylesheet" href="/jh-ui/textfield/style.css">
     <link rel="stylesheet" href="/jh-ui/textfield-group/style.css">
+    <link rel="stylesheet" href="/jh-ui/radio/style.css">
     <style>
         button {
             padding: 10px 20px;
@@ -89,6 +90,30 @@
             </div>
             <div class="jh-errtxt"></div>
         </div>
+    </div>
+
+    <div id="radio-container" style="display: flex; padding: 10px 0;">
+        <label id="defaultRadio" class="jh-radio">
+            <input type="radio" name="rd" value="default">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Default radio
+        </label>
+        <label id="themedRadio" class="jh-radio" style="margin: 0px 10px;">
+            <input type="radio" name="rd" value="themed">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Themed radio
+        </label>
+        <label id="errorRadio" class="jh-radio">
+            <input type="radio" checked="checked" name="rd" value="error">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Error radio
+        </label>
     </div>
 </body>
 </html>

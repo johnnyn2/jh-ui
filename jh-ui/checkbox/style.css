@@ -19,7 +19,7 @@
     width: 0;
 }
 
-.checkmark {
+.jh-checkbox .checkmark {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +37,7 @@
     border: 2px solid transparent;
 }
 
-.checkmark .check {
+.jh-checkbox .checkmark .check {
     content: "";
     position: absolute;
 }
