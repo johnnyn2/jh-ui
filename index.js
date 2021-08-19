@@ -104,6 +104,15 @@ document.addEventListener("DOMContentLoaded", e => {
         );
         console.log(isValid);
     });
+
+    const genTextfieldGrpHtml = JHTextFieldGroup.createElement({
+        textfieldGroupId: 'gen-textfield-grp',
+        label: 'Generated textfield group',
+        textfieldId: 'gen-textfield-grp-textfield',
+        placeholder: '123'
+    });
+    const genTextfieldGrp = new JHTextFieldGroup(genTextfieldGrpHtml);
+    document.getElementById('textinput-container').appendChild(genTextfieldGrpHtml);
 })
 
 window.JHElement=JHElement;

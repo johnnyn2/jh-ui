@@ -41,7 +41,7 @@ class JHTextField extends JHElement {
     }
 
     static html({id}) {
-
+        return `<input id="${id}" class="jh-textfield" type="text">`;
     }
 
     static createElement(props) {

@@ -19,7 +19,6 @@ class JHTextFieldGroup extends JHElement {
 
     validate(...validators) {
         const errObjs = validators.filter(v => !v.result);
-        console.log('errObjs: ', errObjs);
         const isValid = errObjs.length <= 0;
         if (isValid) {
             this.jhErrTxt.innerHTML = '&nbsp;';
@@ -33,12 +32,20 @@ class JHTextFieldGroup extends JHElement {
         return isValid;
     }
 
-    static html() {
-
+    static html({textfieldGroupId, label, textfieldId, placeholder}) {
+        return `
+            <div id="${textfieldGroupId}" class="jh-textfield-group">
+                <label for="${textfieldId}">${label}</label>
+                <div class="jh-textfield-row">
+                    <input id="${textfieldId}" class="jh-textfield" type="text" placeholder="${placeholder}">
+                </div>
+                <div class="jh-errtxt"></div>
+            </div>
+        `;
     }
 
-    static createElement(props) {
-        const jhTextFieldGroupHTML = this.html(props);
+    static createElement({textfieldGroupId, label, textfieldId, placeholder}) {
+        const jhTextFieldGroupHTML = this.html({textfieldGroupId, label, textfieldId, placeholder});
         const textfieldGroupElement = super.createHTMLElement(jhTextFieldGroupHTML);
         return textfieldGroupElement;
     }
