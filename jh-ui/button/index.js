@@ -63,8 +63,8 @@ class JHButton extends JHElement {
         `;
     }
 
-    static createElement(props) {
-        const jhButtonHtml = this.html(props);
+    static createElement({id, label, theme}) {
+        const jhButtonHtml = this.html({id, label, theme});
         const btnHtmlElement = super.createHTMLElement(jhButtonHtml);
         return btnHtmlElement;
     }

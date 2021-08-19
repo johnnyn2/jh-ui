@@ -44,8 +44,8 @@ class JHTextField extends JHElement {
         return `<input id="${id}" class="jh-textfield" type="text" name="${name}">`;
     }
 
-    static createElement(props) {
-        const jhTextFieldHTML = this.html(props);
+    static createElement({id, name}) {
+        const jhTextFieldHTML = this.html({id, name});
         const textfieldElement = super.createHTMLElement(jhTextFieldHTML);
         return textfieldElement;
     }

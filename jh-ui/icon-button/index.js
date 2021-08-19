@@ -14,8 +14,8 @@ class JHIconButton extends JHButton {
         `
     }
 
-    static createElement(props) {
-        const jhButtonHtml = this.html(props);
+    static createElement({id, iconFont}) {
+        const jhButtonHtml = this.html({id, iconFont});
         const buttonElement = super.createHTMLElement(jhButtonHtml);
         return buttonElement;
     }

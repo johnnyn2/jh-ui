@@ -24,8 +24,8 @@ class JHIconButtonMenu extends JHElement{
         `
     }
 
-    static createElement(props) {
-        const jhIconBtnMenuHTML = this.html(props);
+    static createElement({id, iconFont, menuItems}) {
+        const jhIconBtnMenuHTML = this.html({id, iconFont, menuItems});
         const iconBtnMenuHtmlElement = super.createHTMLElement(jhIconBtnMenuHTML);
         return iconBtnMenuHtmlElement;
     }

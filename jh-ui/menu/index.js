@@ -31,8 +31,8 @@ class JHMenu extends JHElement {
         `
     }
 
-    static createElement(props) {
-        const jhMenuHTML = this.html(props);
+    static createElement({id, menuItems}) {
+        const jhMenuHTML = this.html({id, menuItems});
         const menuHtmlElement = super.createHTMLElement(jhMenuHTML);
         return menuHtmlElement;
     }
