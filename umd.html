@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMD import jh library</title>
+    <link rel="stylesheet" href="./dist/jh.min.css">
+    <script src="./dist/jh.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", e => {
+            const genRadioElHtml1 = JHRadio.createElement({
+                id: 'test-rad1',
+                checked: true,
+                name: '123 rad',
+                value: '123 rad1',
+                label: 'Generated radio1'
+            });
+            const jhGenRadioEl1 = new JHRadio(genRadioElHtml1, 'green');
+            const genRadioElHtml2 = JHRadio.createElement({
+                id: 'test-rad2',
+                checked: false,
+                name: '123 rad',
+                value: '123 rad2',
+                label: 'Generated radio2'
+            });
+            const jhGenRadioEl2 = new JHRadio(genRadioElHtml2, 'red');
+            document.getElementById('radio-container').appendChild(genRadioElHtml1);
+            document.getElementById('radio-container').appendChild(genRadioElHtml2);
+        });
+    </script>
+</head>
+<body>
+    <div id="radio-container"></div>
+</body>
+</html>
