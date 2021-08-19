@@ -6,6 +6,14 @@ import JHIconButtonMenu from './jh-ui/icon-button-menu/index.js';
 import JHCheckbox from './jh-ui/checkbox/index.js';
 import JHTextField from './jh-ui/textfield/index.js';
 import JHTextFieldGroup from './jh-ui/textfield-group/index.js';
+import JHValidation from './jh-ui/util/validation.js';
+
+const {
+    isEmail,
+    notNumber,
+    withinRange,
+    isNumber,
+} = JHValidation;
 
 document.addEventListener("DOMContentLoaded", e => {
     const buttons = document.getElementsByClassName("jh-btn");
@@ -76,22 +84,23 @@ document.addEventListener("DOMContentLoaded", e => {
     const validateEmailBtn = document.getElementById('validateEmailBtn');
     const jhValidateEmailBtn = new JHButton(validateEmailBtn);
     jhValidateEmailBtn.on('click', e => {
+        const value = jhEmailTextfield.val();
         const isValid = jhEmailTextfield.validate(
-            jhEmailTextfield.isEmail(),
-            !jhEmailTextfield.isNumber()
+            notNumber({value}),
+            isEmail({value}),
         );
         console.log(isValid);
     })
-    // const rangeInputField = document.getElementById('rangeTextfield');
-    // const jhRangeInputField = new JHTextField(rangeInputField);
     const rangeInputGroup = document.getElementById('rangeInputGroup');
     const jhRangeInputGroup = new JHTextFieldGroup(rangeInputGroup);
     const validateRangeBtn = document.getElementById('validateRangeBtn');
     const jhValidateRangeBtn = new JHButton(validateRangeBtn);
     jhValidateRangeBtn.on('click', e => {
         const textfield = jhRangeInputGroup.jhTextField;
-        const isValid = textfield.validate(
-            textfield.withinRange(1, 2)
+        const value = textfield.val();
+        const isValid = jhRangeInputGroup.validate(
+            isNumber({value}),
+            withinRange({min: 1, max: 2, value})
         );
         console.log(isValid);
     });

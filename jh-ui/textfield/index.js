@@ -12,22 +12,17 @@ class JHTextField extends JHElement {
         });
     }
 
+    on(type, handler) {
+        this.jhTextfield.addEventListener(type, e => handler(e));
+        return this;
+    }
+
     val() {
         return this.jhTextfield.value;
     }
 
-    isEmpty = () => typeof this.jhTextfield.value === 'undefined' || this.jhTextfield.value === '';
-
-    isEmail = () => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.jhTextfield.value);
-
-    isUrl = () => /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(this.jhTextfield.value);
-
-    isNumber = () => !isNaN(this.jhTextfield.value);
-
-    withinRange = (min, max) => this.isNumber() &&  Number(this.jhTextfield.value) >= min && Number(this.jhTextfield.value) <= max; 
-
     validate(...validators) {
-        const isValid = validators.every(v => v === true);                      
+        const isValid = validators.every(v => v.result === true);                      
         this.setIsError(!isValid);
         return isValid;
     }

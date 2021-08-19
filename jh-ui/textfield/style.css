@@ -1,6 +1,7 @@
 .jh-textfield {
     font-size: 16px;
     border-style: solid;
+    padding: 5px;
 }
 
 .jh-textfield:focus {
