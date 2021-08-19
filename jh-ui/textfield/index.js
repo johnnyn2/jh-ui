@@ -40,8 +40,8 @@ class JHTextField extends JHElement {
         this.isDisabled = isDisabled;
     }
 
-    static html({id}) {
-        return `<input id="${id}" class="jh-textfield" type="text">`;
+    static html({id, name}) {
+        return `<input id="${id}" class="jh-textfield" type="text" name="${name}">`;
     }
 
     static createElement(props) {

@@ -26,7 +26,7 @@ const JHValidation = {
     }),
     withinRange: ({min, max, value, errTxt}) => ({
         type: 'withinRange',
-        result: isNumber({value}).result &&  Number(value) >= min && Number(value) <= max,
+        result: !isNaN(value) &&  Number(value) >= min && Number(value) <= max,
         errTxt: errTxt || `This value should be between ${min} and ${max}`
     })
 };

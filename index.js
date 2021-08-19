@@ -109,7 +109,8 @@ document.addEventListener("DOMContentLoaded", e => {
         textfieldGroupId: 'gen-textfield-grp',
         label: 'Generated textfield group',
         textfieldId: 'gen-textfield-grp-textfield',
-        placeholder: '123'
+        placeholder: '123',
+        name: "textfield-name"
     });
     const genTextfieldGrp = new JHTextFieldGroup(genTextfieldGrpHtml);
     document.getElementById('textinput-container').appendChild(genTextfieldGrpHtml);

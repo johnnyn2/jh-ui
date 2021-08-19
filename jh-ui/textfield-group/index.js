@@ -32,20 +32,20 @@ class JHTextFieldGroup extends JHElement {
         return isValid;
     }
 
-    static html({textfieldGroupId, label, textfieldId, placeholder}) {
+    static html({textfieldGroupId, label, textfieldId, placeholder, name}) {
         return `
             <div id="${textfieldGroupId}" class="jh-textfield-group">
                 <label for="${textfieldId}">${label}</label>
                 <div class="jh-textfield-row">
-                    <input id="${textfieldId}" class="jh-textfield" type="text" placeholder="${placeholder}">
+                    <input id="${textfieldId}" class="jh-textfield" type="text" placeholder="${placeholder}" name="${name}">
                 </div>
                 <div class="jh-errtxt"></div>
             </div>
         `;
     }
 
-    static createElement({textfieldGroupId, label, textfieldId, placeholder}) {
-        const jhTextFieldGroupHTML = this.html({textfieldGroupId, label, textfieldId, placeholder});
+    static createElement({textfieldGroupId, label, textfieldId, placeholder, name}) {
+        const jhTextFieldGroupHTML = this.html({textfieldGroupId, label, textfieldId, placeholder, name});
         const textfieldGroupElement = super.createHTMLElement(jhTextFieldGroupHTML);
         return textfieldGroupElement;
     }
