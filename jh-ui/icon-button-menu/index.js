@@ -27,8 +27,9 @@ class JHIconButtonMenu extends JHElement{
      * @param {Object} props Props of the html JHIconButtonMenu
      * @param {String} [props.id] Id of the icon button menu
      * @param {String} props.iconFont Icon font string from Font-Awesome-4.7.0
-     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @param {Array.<{label: String}>} props.menuItems Array of menu item objects
      * @returns {String} HTML string of icon button menu
+     * @description Get HTML string of JHIconButtonMenu
      */
     static html(props) {
         const {id, iconFont, menuItems} = props;
@@ -45,11 +46,12 @@ class JHIconButtonMenu extends JHElement{
      * @param {Object} props Props of the html JHIconButtonMenu
      * @param {String} [props.id] Id of the icon button menu
      * @param {String} props.iconFont Icon font string from Font-Awesome-4.7.0
-     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @param {Array.<{label: String}>} props.menuItems Array of menu item objects
      * @returns {HTMLElement} HTML element of icon button menu
+     * @description Create a HTML element of JHIconButtonMenu
      */
-    static createElement({id, iconFont, menuItems}) {
-        const jhIconBtnMenuHTML = this.html({id, iconFont, menuItems});
+    static createElement(props) {
+        const jhIconBtnMenuHTML = this.html(props);
         const iconBtnMenuHtmlElement = super.createHTMLElement(jhIconBtnMenuHTML);
         return iconBtnMenuHtmlElement;
     }

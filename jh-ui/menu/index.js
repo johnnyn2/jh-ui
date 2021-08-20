@@ -40,8 +40,9 @@ class JHMenu extends JHElement {
     /**
      * @param {Object} props Props of the html JHMenu 
      * @param {String} props.id Id of the menu
-     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @param {Array.<{label: String}>} props.menuItems Array of menu item objects
      * @returns {String} HTML string of the menu
+     * @description Get HTML string of JHMenu
      */
     static html(props) {
         const {id, menuItems} = props;
@@ -55,8 +56,9 @@ class JHMenu extends JHElement {
     /**
      * @param {Object} props Props of the html JHMenu 
      * @param {String} props.id Id of the menu
-     * @param {{label: String}[]} props.menuItems Array of menu item objects
+     * @param {Array.<{label: String}>} props.menuItems Array of menu item objects
      * @returns {HTMLElement} HTML element of the menu
+     * @description Create a HTML element of JHMenu
      */
     static createElement(props) {
         const jhMenuHTML = this.html(props);
