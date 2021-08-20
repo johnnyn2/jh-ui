@@ -9,3 +9,10 @@ https://johnnyn2.github.io/jh-ui/
 ## Docs
 
 https://johnnyn2.github.io/jh-ui/jh-ui/docs/index.html
+
+## Installation
+<ol>
+  <li>Include font-awesome-4.7.0/css/font-awesome.min.css</li>
+  <li>Include /dist/jh.min.css</li>
+  <li>Include /dist/jh.min.js</li>
+</ol>
