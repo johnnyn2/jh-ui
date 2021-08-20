@@ -4,11 +4,124 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMD import jh library</title>
+    <title>Demo</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./dist/jh.min.css">
     <script src="./dist/jh.min.js"></script>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+    </style>
     <script>
+        const {isNumber, notNumber, isEmail, withinRange} = JHValidation;
         document.addEventListener("DOMContentLoaded", e => {
+            const buttons = document.getElementsByClassName("jh-btn");
+            for(const button of buttons) {
+                const jhBtn = new JHButton(button);
+                jhBtn.on('click', e => console.log('jhButton is clicked'));
+            }
+
+            const iconBtns = document.getElementsByClassName("jh-icon-btn");
+            for (const iconBtn of iconBtns) {
+                const jhIconBtn = new JHIconButton(iconBtn);
+            }
+
+            const iconBtnMenus = document.getElementsByClassName("jh-icon-btn-menu");
+            for (const iconBtnMenu of iconBtnMenus) {
+                const jhIconBtnMenu = new JHIconButtonMenu(iconBtnMenu, [
+                    e => console.log('first menu item: ', e),
+                    e => console.log('second menu item: ', e),
+                    e => console.log('third menu item: ', e)
+                ]);
+                console.log('menu items: ', jhIconBtnMenu.jhMenu.jhMenuItems);
+            }
+
+            const mockMenuOptions = [
+                {
+                    label: 'Pause',
+                    clickHandler: e => console.log('Pause')
+                },
+                {
+                    label: 'Resume',
+                    clickHandler: e => console.log('Resume')
+                },
+                {
+                    label: 'Open',
+                    clickHandler: e => console.log('Open')
+                },
+                {
+                    label: 'Close',
+                    clickHandler: e => console.log('Close')
+                }
+            ]; // some data fetched from api
+            const generatedIconBtnMenuHtmlEl = JHIconButtonMenu.createElement({
+                iconFont: "fa fa-ellipsis-v",
+                menuItems: mockMenuOptions
+            });
+            const generatedJHIconBtnMenu = new JHIconButtonMenu(generatedIconBtnMenuHtmlEl, mockMenuOptions.map(opt => opt.clickHandler));
+            const generatedBtnHtmlEl = JHButton.createElement({ label: "1234567"});
+            const generatedJHButton = new JHButton(generatedBtnHtmlEl);
+            generatedJHButton.on('click', e => console.log('I am generated JHButton'));
+            const generatedIconBtnHtmlEl = JHIconButton.createElement({ iconFont: "fa fa-ellipsis-v"});
+            const generatedJHIconBtn = new JHIconButton(generatedIconBtnHtmlEl);
+            generatedJHIconBtn.on('click', e => console.log('I am generated JHIconButton'))
+            const generatedElements = document.getElementById('generated-elements');
+            generatedElements.appendChild(generatedIconBtnMenuHtmlEl);
+            generatedElements.appendChild(generatedBtnHtmlEl);
+            generatedElements.appendChild(generatedIconBtnHtmlEl);
+
+            const themedCheckbox = document.getElementById('themedCheckbox');
+            const jhThemedCheckbox = new JHCheckbox(themedCheckbox, '#1976d2');
+            const defaultCheckbox = document.getElementById('defaultCheckbox');
+            const jhDefaultCheckbox = new JHCheckbox(defaultCheckbox);
+            const errorCheckbox = document.getElementById('errorCheckbox');
+            const jhErrorCheckbox = new JHCheckbox(errorCheckbox, '#FF6530');
+            jhErrorCheckbox.on('click', () => console.log('error check is clicked'))
+
+            const emailTextfield = document.getElementById('emailTextfield');
+            const jhEmailTextfield = new JHTextField(emailTextfield);
+            const validateEmailBtn = document.getElementById('validateEmailBtn');
+            const jhValidateEmailBtn = new JHButton(validateEmailBtn);
+            jhValidateEmailBtn.on('click', e => {
+                const value = jhEmailTextfield.val();
+                const isValid = jhEmailTextfield.validate(
+                    notNumber({value}),
+                    isEmail({value}),
+                );
+                console.log(isValid);
+            })
+            const rangeInputGroup = document.getElementById('rangeInputGroup');
+            const jhRangeInputGroup = new JHTextFieldGroup(rangeInputGroup);
+            const validateRangeBtn = document.getElementById('validateRangeBtn');
+            const jhValidateRangeBtn = new JHButton(validateRangeBtn);
+            jhValidateRangeBtn.on('click', e => {
+                const textfield = jhRangeInputGroup.jhTextField;
+                const value = textfield.val();
+                const isValid = jhRangeInputGroup.validate(
+                    isNumber({value}),
+                    withinRange({min: 1, max: 2, value})
+                );
+                console.log(isValid);
+            });
+
+            const genTextfieldGrpHtml = JHTextFieldGroup.createElement({
+                textfieldGroupId: 'gen-textfield-grp',
+                label: 'Generated textfield group',
+                textfieldId: 'gen-textfield-grp-textfield',
+                placeholder: '123',
+                name: "textfield-name"
+            });
+            const genTextfieldGrp = new JHTextFieldGroup(genTextfieldGrpHtml);
+            document.getElementById('textinput-container').appendChild(genTextfieldGrpHtml);
+
+            const defaultRadioEl = document.getElementById('defaultRadio');
+            const jhDefaultRadio = new JHRadio(defaultRadioEl, 'rgba(0, 0, 0, 0.54)');
+            const themedRadioEl = document.getElementById('themedRadio');
+            const jhThemedRadio = new JHRadio(themedRadioEl, 'rgb(25, 118, 210)');
+            const errorRadioEl = document.getElementById('errorRadio');
+            const jhErrorRadio = new JHRadio(errorRadioEl, '#FF6530');
+
             const genRadioElHtml1 = JHRadio.createElement({
                 id: 'test-rad1',
                 checked: true,
@@ -31,6 +144,102 @@
     </script>
 </head>
 <body>
-    <div id="radio-container"></div>
+    <div style="padding: 10px 0px; display: flex;">
+        <button id="testBtn" class="jh-btn jh-primary">Find out more</button>
+        <button>Find out less</button>
+        <button class="jh-btn jh-default">Find out default</button>
+        <button class="jh-btn jh-danger">Find out danger</button>
+        <button class="jh-btn jh-default jh-disabled" disabled>Disabled</button>
+        <button class="jh-btn jh-primary jh-disabled loading" disabled>Fetching data</button>
+    </div>
+    
+    <div style="display: flex; padding: 10px 0px;">
+        <div style="margin-right: 10px;">
+            <button class="jh-btn jh-icon-btn">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="jh-menu-wrapper jh-icon-btn-menu">
+            <button class="jh-btn jh-icon-btn">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="jh-menu hide">
+                <button class="jh-menu-item">Menu Item 1</button>
+                <button class="jh-menu-item">Menu Item 2</button>
+                <button class="jh-menu-item">Menu Item 3</button>
+            </div>
+        </div>
+        <div id="generated-elements" style="margin-left: 10px; display: flex;"></div>
+    </div>
+
+    <div style="display: flex; padding: 10px 0px;">
+        <label id="themedCheckbox" class="jh-checkbox">
+            <input type="checkbox" checked="checked" name="ck" value="themed">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Themed checkbox
+        </label>
+        <label id="defaultCheckbox" class="jh-checkbox" style="margin-left: 10px;">
+            <input type="checkbox" checked="checked" name="ck" value="default">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Default checkbox
+        </label>
+        <label id="errorCheckbox" class="jh-checkbox" style="margin-left: 10px;">
+            <input type="checkbox" checked="checked" name="ck" value="error">
+            <span class="checkmark jh-error">
+                <span class="check"></span>
+            </span>
+            Error checkbox
+        </label>
+    </div>
+
+    <div id="textinput-container" style="display: flex;">
+        <div class="jh-textfield-group">
+            <label for="emailTextfield">Email</label>
+            <div class="jh-textfield-row">
+                <input id="emailTextfield" class="jh-textfield" type="text" name="email">
+                <button id="validateEmailBtn" class="jh-btn jh-primary">Validate email</button>
+            </div>
+            <div class="jh-errtxt"></div>
+        </div>
+        <div id="rangeInputGroup" class="jh-textfield-group">
+            <label for="rangeTextfield">Number</label>
+            <div class="jh-textfield-row">
+                <input id="rangeTextfield" class="jh-textfield" type="text" placeholder="between 1 and 2" name="num">
+                <button id="validateRangeBtn" class="jh-btn jh-primary">Validate range</button>
+            </div>
+            <div class="jh-errtxt"></div>
+        </div>
+    </div>
+
+    <div id="radio-container" style="display: flex; padding: 10px 0;">
+        <label id="defaultRadio" class="jh-radio">
+            <input type="radio" name="rd" value="default">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Default radio
+        </label>
+        <label id="themedRadio" class="jh-radio" style="margin: 0px 10px;">
+            <input type="radio" name="rd" value="themed">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Themed radio
+        </label>
+        <label id="errorRadio" class="jh-radio">
+            <input type="radio" checked="checked" name="rd" value="error">
+            <span class="checkmark">
+                <span class="check"></span>
+            </span>
+            Error radio
+        </label>
+    </div>
+    <div>
+        <a href="./jh-ui/docs/index.html">Docs</a>
+    </div>
 </body>
 </html>
