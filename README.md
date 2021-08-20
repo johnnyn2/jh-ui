@@ -16,3 +16,6 @@ https://johnnyn2.github.io/jh-ui/jh-ui/docs/index.html
   <li>Include /dist/jh.min.css</li>
   <li>Include /dist/jh.min.js</li>
 </ol>
+
+## LICENSE
+MIT
